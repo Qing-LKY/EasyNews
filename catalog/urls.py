@@ -7,4 +7,6 @@ from catalog import views
 urlpatterns = [
     # 如果检测到URL模式''，view.py中函数index() 将被调用
     path('', views.index, name='index'),
+    path('news/', views.news, name='news'),
+    path('news/<int:newsId>', views.news_detail, name='news_detail'),
 ]

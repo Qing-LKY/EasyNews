@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1> 所有新闻 </h1>
+    {% if news_list %}
+    <ul>
+        {% for news in news_list %}
+        <li>
+            [{{ news.kind }}] <a href="{{ news.get_absolute }}">{{ news.title }}</a> - {{ news.author }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p> 这里什么都没有哦。</p>
+    {% endif %}
+{% endblock %}

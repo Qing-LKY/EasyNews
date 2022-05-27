@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 #from django_countries.fields import CountryField
 
@@ -32,8 +33,9 @@ class News(models.Model):
 
     # 此处定义的是我们点进这个 News 之后进入的具体描述的页面的 url
 
-    #def get_absolute_url(self):
-    #    pass
+    def get_absolute_url(self):
+        # 这个 reverse 意思是逆着这个 'news-detail'的名字去追踪 url
+        return reverse('news-detail', args=[self.id])
 
 
 class Author(models.Model):
