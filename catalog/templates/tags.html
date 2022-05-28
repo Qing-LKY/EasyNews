@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title> 话题列表 </title>
+{% endblock %}
+
+{% block content %}
+    <h1> 话题 </h1>
+    {% if tags_list %}
+    <ul>
+        <p style="color: green">(｡･∀･)ﾉﾞ嗨！这里共有 {{ num_tags }} 个有趣的话题哦！</p>
+        {% for tags in tags_list %}
+        <li>
+            <a href="{{ tags.get_absolute_url }}">{{ tags.name }}</a> [<span style="color:brown">{{ tags.get_hot_value }}</span>] 
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p> 这里什么都没有哦。</p>
+    {% endif %}
+{% endblock %}

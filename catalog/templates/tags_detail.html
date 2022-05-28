@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title> 话题：{{ tag.name }} </title>
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ tag.name }}</h1>
+
+    <p> (｡･∀･)ﾉﾞ嗨！欢迎来到话题<span style="color:blueviolet">{{ tag.name }}</span></p>
+
+    <p style="color:green">
+        {{ tag.description|linebreaksbr }}
+    </p>
+
+    <p>
+        <strong>最新动态({{ news_list.count }})：</strong>
+        {% for news in news_list %}
+            <li><a href="{{ news.get_absolute_url }}">{{ news.title }}</a> - {{ news.author }} - {{ news.time }}</li>
+        {% endfor %}
+    </p>
+
+{% endblock %}

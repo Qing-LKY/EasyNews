@@ -9,4 +9,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('news/', views.news, name='news'),
     path('news/<int:newsId>', views.news_detail, name='news_detail'),
+    path('tags/', views.tags, name='tags'),
+    path('tags/<int:tagId>', views.tags_detail, name='tags_detail'),
+    path('mynews', views.mynews, name='mynews'),
+    path('create/', views.NewsCreate.as_view(), name='create'),
+    path('update/<int:pk>', views.NewsUpdate.as_view(), name='update')
+    # path('info/<str:username>', views.),
 ]

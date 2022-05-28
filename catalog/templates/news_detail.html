@@ -1,9 +1,32 @@
 {% extends "base_generic.html" %}
 
+{% block title %}
+    <title> {{ news.title }} </title>
+{% endblock %}
+
 {% block content %}
 
     <h1>{{ news.title }}</h1>
 
-    <p>{{ news.text }}</p>
+    <p>
+        <strong>发布时间:</strong>{{ news.time }}
+        <strong>类型:</strong>{{ news.kind }} 
+        <strong>作者：</strong>{{ news.author }}
+    </p>
+
+    {% if user.is_authenticated %}
+        {% if user == news.author %}
+            <a href="{% url 'update' news.newsId %}"> 重新发布 </a>
+        {% endif %}
+    {% endif %}
+
+    <p>
+        <strong>话题：</strong>
+        {% for tags in news.tags.all %}
+            <a href="{{ tags.get_absolute_url }}"> {{ tags.name }} </a>
+        {% endfor %}
+    </p>
+
+    <p style="font-size: 150%">{{ news.text|linebreaksbr }}</p>
 
 {% endblock %}
