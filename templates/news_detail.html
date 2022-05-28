@@ -21,6 +21,10 @@
     {% endif %}
 
     <p>
+        <img src="{{ news.image.url }}" class="img-fluid float-end h-100"/>
+    </p>
+
+    <p>
         <strong>话题：</strong>
         {% for tags in news.tags.all %}
             <a href="{{ tags.get_absolute_url }}"> {{ tags.name }} </a>

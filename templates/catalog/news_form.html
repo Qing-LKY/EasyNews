@@ -4,12 +4,21 @@
 
 <h1> (｡･∀･)ﾉﾞ嗨，这是一个很贴心简朴的编辑器 </h1>
 
+{% if user.is_authenticated %}
+
 <form action="" method="post">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
     </table>
+    <br>
     <input type="submit" value="Submit" />
-
 </form>
+
+{% else %}
+
+    {% include "kuku.html" %}
+
+{% endif %}
+
 {% endblock %}

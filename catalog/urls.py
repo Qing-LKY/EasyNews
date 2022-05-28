@@ -13,6 +13,6 @@ urlpatterns = [
     path('tags/<int:tagId>', views.tags_detail, name='tags_detail'),
     path('mynews', views.mynews, name='mynews'),
     path('create/', views.NewsCreate.as_view(), name='create'),
-    path('update/<int:pk>', views.NewsUpdate.as_view(), name='update')
-    # path('info/<str:username>', views.),
+    path('update/<int:pk>', views.NewsUpdate.as_view(), name='update'),
+    path('search', views.search, name='search'),
 ]

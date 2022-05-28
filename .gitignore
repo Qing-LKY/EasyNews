@@ -1,0 +1,8 @@
+# media
+media/news
+media/tags
+media/*.Identifier
+
+# python
+__pycache__/
+.env/
