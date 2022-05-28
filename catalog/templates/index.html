@@ -1,15 +1,22 @@
 {% extends "base_generic.html" %}
 
+{% block title %}
+  <title>简单新闻，新鲜每一天！</title>
+{% endblock %}
+
 {% block content %}
 <h1>Easy News Home</h1>
 
   <p>欢迎来到 <em>EasyNews</em>！在这里，你可以看到最新鲜的厕所！</p>
 
-<h2>Dynamic content</h2>
+<h2>发生甚么事了？</h2>
 
   <p>目前这里有什么捏？</p>
   <ul>
-    <li><strong>新闻数:</strong> {{ test }}</li>
+    <li>
+      <strong>最新动态:</strong>
+      <a href="{{ top_news.get_absolute_url }}">{{ top_news.title }} - {{ top_news.author.username }}</a>
+    </li>
   </ul>
 
 {% endblock %}

@@ -22,8 +22,21 @@
       <div class="col-sm-2">
       {% block sidebar %}
       <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="">All news</a></li>
+          <li><a href="{% url 'index' %}">主页</a></li>
+          <li><a href="{% url 'news' %}">趣闻一览</a></li>
+          <li><a href="{% url 'tags' %}">话题</a></li>
+          <br>
+        {% if user.is_authenticated %}
+          <li>你好，<a style="text-decoration:none; color:blue" href={% url 'mynews' %}>{{ user.get_username }}！</li>
+          <li><a href="{% url 'logout' %}?next={{request.path}}">登出</a></li>
+          <li><a href="{% url 'create' %}">发布</a></li>
+          {% if user.is_staff %}
+            <li><a href="/admin">管理站点</a></li>
+          {% endif %}
+        {% else %}
+          <li>欢迎吖，嗷呜~</li>
+          <li><a href="{% url 'login'%}?next={{request.path}}">登录</a></li>
+        {% endif %} 
       </ul>
      {% endblock %}
       </div>

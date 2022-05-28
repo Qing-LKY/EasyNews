@@ -56,7 +56,7 @@ ROOT_URLCONF = 'EasyNews.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ './templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,4 +129,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirect to home after login
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+# test for email
+# 会把发送的email记录在控制台中
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
