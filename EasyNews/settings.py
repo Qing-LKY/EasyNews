@@ -134,3 +134,7 @@ LOGIN_REDIRECT_URL = '/'
 # test for email
 # 会把发送的email记录在控制台中
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Handle user upload files (book cover, author photo)
+MEDIA_ROOT = 'media'
+MEDIA_URL = 'media/'

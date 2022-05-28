@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% if user.is_authenticated %}
+
 {% block title %}
   <title> 你好，{{ user.get_username }} </title>
 {% endblock %}
@@ -10,7 +12,15 @@
   <p> 你一共发过 {{ news_cnt }} 条动态辣！</p>
   <p> 这些就是你发的哦：</p>
   {% for news in news_list %}
-    <li>[{{ news.kind }}] <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> - {{ news.tag.name }}</li>
+    <li>[{{ news.kind }}] <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> - {{ news.tags.all|join:", " }}</li>
   {% endfor %}
 
 {% endblock %}
+
+{% else %}
+
+  {% block content %}
+    {% include "kuku.html" %}
+  {% endblock %}
+
+{% endif %}

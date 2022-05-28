@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>你在找什么捏</title>
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="get">
+    <div class="input-group p-4">
+        <input type="search" placeholder="想找什么~(￣▽￣)~*" {% if query %}
+               value="{{ query }}" {% endif %}
+               aria-label="Search" aria-describedby="search-addon" name="s" required/>
+        <button type="submit" class="btn btn-outline-dark">search</button>
+    </div>
+</form>
+
+{% if news_list %}
+
+<p><img src="/media/maomao.gif" class="img-fluid float-end h-100"/></p>
+<h3>找到辣！</h3>
+{% for news in news_list %}
+<li>
+    [{{ news.kind }}] <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> - {{ news.author }} - {{ news.time }}
+</li>
+{% endfor %}
+
+{% else %}
+
+<p><img src="/media/kuku.gif" class="img-fluid float-end h-100"/></p>
+
+<h3>这里什么都没有喔</h3>
+
+{% endif %}
+
+{% endblock %}

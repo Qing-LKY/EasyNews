@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
-from django.utils import timezone
+from django.db.models import F, Q
 # from .models import Author
 # Create your views here.
 # 这个函数是给首页提供支持的
@@ -57,7 +57,7 @@ def mynews(request):
 
 class NewsCreate(CreateView):
     model = News
-    fields = ['title', 'tags', 'kind', 'text']
+    fields = ['title', 'tags', 'kind', 'text', 'image']
     def form_valid(self, form):
         if self.request.user.is_authenticated:
             form.instance.author = self.request.user
@@ -67,7 +67,7 @@ class NewsCreate(CreateView):
 
 class NewsUpdate(UpdateView):
     model = News
-    fields = ['title', 'tags', 'kind', 'text']
+    fields = ['title', 'tags', 'kind', 'text', 'image']
     def form_valid(self, form):
         if self.request.user.is_authenticated:
             if form.instance.author != self.request.user:
@@ -76,3 +76,14 @@ class NewsUpdate(UpdateView):
             raise ValidationError(_('没登陆不能发帖的！快加入我们'))
         # form.instance.time = timezone.now
         return super(NewsUpdate, self).form_valid(form)
+
+def search(request):
+    s = request.GET.get('s', None)
+    if s is None:
+        return render(request, 'search.html')
+    news_list = News.objects.filter(Q(title__contains=s) | Q(text__contains=s)).distinct()
+    context = {
+        "news_list": news_list,
+        "query": s
+    }
+    return render(request, 'search.html', context=context)
