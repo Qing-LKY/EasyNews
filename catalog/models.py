@@ -20,7 +20,7 @@ class News(models.Model):
     kind = models.ForeignKey('Kind', on_delete=models.PROTECT)
     text = models.TextField(null=True)
     tags = models.ManyToManyField('Tags')
-    time = models.DateTimeField(default=timezone.now)
+    time = models.DateTimeField(auto_now_add=True)
 
     # 此处的定义可以理解为这个表的默认排序方式
 

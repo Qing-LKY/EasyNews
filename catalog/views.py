@@ -72,8 +72,7 @@ class NewsUpdate(UpdateView):
         if self.request.user.is_authenticated:
             if form.instance.author != self.request.user:
                 raise ValidationError(_('你只能更新自己的动态哦(⊙o⊙)？'))
-            else:
-                form.instance.time = timezone.now
         else:
             raise ValidationError(_('没登陆不能发帖的！快加入我们'))
+        # form.instance.time = timezone.now
         return super(NewsUpdate, self).form_valid(form)
