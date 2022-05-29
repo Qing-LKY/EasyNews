@@ -112,7 +112,7 @@
 
 - 在 [freedgo](https://www.freedgo.com/) 上手动画的
 
-  ![](./media/ER.png)
+  ![](ER.png)
 
 ## 未来
 
