@@ -97,13 +97,13 @@
 - 数据备份
 
   ```
-  ./manager.py dumpdata > db.json
+  ./manage.py dumpdata > db.json
   ```
 
 - 数据恢复
 
   ```
-  ./manager.py loaddata db.json
+  ./manage.py loaddata db.json
   ```
 
 - 如果你在这过程中出现什么问题，可以考虑将 ./catalog/migrations 里除了 \_\_init\_\_.py 的文件全部删掉
