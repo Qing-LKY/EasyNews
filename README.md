@@ -112,6 +112,8 @@
 
 - 在 [freedgo](https://www.freedgo.com/) 上手动画的
 
+  **注意，github 上的图片是存在 https://raw.githubusercontent.com/ 上的。如果你看不到下面的图片，请自行想办法。**
+
   ![](./media/ER.png)
 
 ## 未来
