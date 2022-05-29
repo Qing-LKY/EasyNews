@@ -108,9 +108,11 @@
 
 - 如果你在这过程中出现什么问题，可以考虑将 ./catalog/migrations 里除了 \_\_init\_\_.py 的文件全部删掉
 
-## 待完成
+## ER 图
 
-- 画 E-R 图等
+- 在 [freedgo](https://www.freedgo.com/) 上手动画的
+
+  ![](./media/ER.png)
 
 ## 未来
 
