@@ -54,6 +54,10 @@
 
     在 [127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) 里用你的用户登录然后添加动态、话题和其它用户
 
+    如果你嫌麻烦不想自己手动添加，可以参考下面的数据恢复方法，导入我的 json 文件(这个文件我不会包含在这个项目中，自己去群里找我要)
+
+    当然，这样做的话会导致图片加载出问题，所以你还得找我要图片
+
     访问 [127.0.0.1:8000/](http://127.0.0.1:8000/) 看看效果
 
 其它问题访问[这个](https://www.baidu.com/)大概率能解决。
@@ -70,11 +74,41 @@
 
 - [Mdn django-diy-blog](https://github.com/mdn/django-diy-blog)
 
+## 测试方式
+
+- 使用 django-admin check
+
+  ```
+  django-admin check
+  django-admin check --tag models --tag compatibility
+  ```
+
+- 并发测试
+  
+  使用 apache 工具 ab 模拟高并发的访问
+
+  ```
+  ab -n num_request -c num_vistor http://127.0.0.1:8000
+  ab -t num_second -c num_request http://127.0.0.1:8000
+  ```
+
+## 数据备份和恢复
+
+- 数据备份
+
+  ```
+  ./manager.py dumpdata > db.json
+  ```
+
+- 数据恢复
+
+  ```
+  ./manager.py loaddata db.json
+  ```
+
+- 如果你在这过程中出现什么问题，可以考虑将 ./catalog/migrations 里除了 \_\_init\_\_.py 的文件全部删掉
+
 ## 待完成
-
-- 测试
-
-- 挂到服务器上测试
 
 - 画 E-R 图等
 

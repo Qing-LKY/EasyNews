@@ -6,3 +6,6 @@ media/*.Identifier
 # python
 __pycache__/
 .env/
+
+# data backup
+db.json
