@@ -1,26 +1,22 @@
 {% extends "base_generic.html" %}
 
-{% if user.is_authenticated %}
-
 {% block title %}
+{% if user.is_authenticated %}
   <title> 你好，{{ user.get_username }} </title>
+{% else %}
+  <title> 呜呜，请先登录 </title>
+{% endif %}
 {% endblock %}
 
 {% block content %}
-  
+{% if user.is_authenticated %}
   <h1> 你好，{{ user.get_username }} </h1>
   <p> 你一共发过 {{ news_cnt }} 条动态辣！</p>
   <p> 这些就是你发的哦：</p>
   {% for news in news_list %}
     <li>[{{ news.kind }}] <a href="{{ news.get_absolute_url }}">{{ news.title }}</a> - {{ news.tags.all|join:", " }}</li>
   {% endfor %}
-
-{% endblock %}
-
 {% else %}
-
-  {% block content %}
-    {% include "kuku.html" %}
-  {% endblock %}
-
+  {% include "kuku.html" %}
 {% endif %}
+{% endblock %}
