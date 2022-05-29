@@ -11,6 +11,7 @@
 {% block content %}
 {% if user.is_authenticated %}
   <h1> 你好，{{ user.get_username }} </h1>
+  <hr>
   <p> 你一共发过 {{ news_cnt }} 条动态辣！</p>
   <p> 这些就是你发的哦：</p>
   {% for news in news_list %}

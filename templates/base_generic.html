@@ -21,14 +21,14 @@
     <div class="row">
       <div class="col-sm-2">
       {% block sidebar %}
-      <ul class="sidebar-nav">
+      <ul class="nav nav-pills nav-stacked">
           <li><a href="{% url 'index' %}">主页</a></li>
           <li><a href="{% url 'news' %}">趣闻一览</a></li>
           <li><a href="{% url 'tags' %}">话题</a></li>
           <li><a href="{% url 'search' %}">搜索</a></li>
           <br>
         {% if user.is_authenticated %}
-          <li>你好，<a style="text-decoration:none; color:blue" href={% url 'mynews' %}>{{ user.get_username }}！</li>
+          <li><a style="text-decoration:none; color:blue" href={% url 'mynews' %}>你好，{{ user.get_username }}！</a></li>
           <li><a href="{% url 'logout' %}?next={{request.path}}">登出</a></li>
           <li><a href="{% url 'create' %}">发布</a></li>
           {% if user.is_staff %}

@@ -9,3 +9,5 @@ __pycache__/
 
 # data backup
 db.json
+
+.history/
