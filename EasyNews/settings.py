@@ -25,8 +25,10 @@ SECRET_KEY = 'django-insecure-yevrq$!-6hs@i__^)l0n^o_hwgd7=!s#!^3&n_qa&33@43ffnt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# debug 设置为 False 时，出于安全考虑，需要配置允许访问的 Host
+# 这里我加进去的这三项，其实是 debug = True 时的默认选项
+# ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
