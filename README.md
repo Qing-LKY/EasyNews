@@ -81,9 +81,12 @@ EasyNews 是一个基于 django 开发的，允许用户在各个话题发布动
 - 使用 django-admin check
 
   ```
-  django-admin check
-  django-admin check --tag models --tag compatibility
+  # django-admin check
+  python3 ./manage.py check
+  python3 ./manage.py check --tag models --tag compatibility
   ```
+  
+  需要注意，这里的 django-admin 是个全局工具，需要指定具体的工作目录才能使用。也就等价于我们上面的 python3 ./manage.py
 
 - 并发测试
   
