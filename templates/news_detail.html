@@ -20,9 +20,13 @@
         {% endif %}
     {% endif %}
 
+    {% if news.image %}
     <p>
         <img src="{{ news.image.url }}" class="img-fluid float-end h-100"/>
     </p>
+    {% else %}
+    <br>
+    {% endif %}
 
     <p>
         <strong>话题：</strong>

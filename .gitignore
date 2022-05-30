@@ -1,7 +1,7 @@
 # media
 media/news
 media/tags
-media/*.Identifier
+*.Identifier
 
 # python
 __pycache__/

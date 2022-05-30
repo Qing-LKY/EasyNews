@@ -27,7 +27,7 @@ def index(request):
 # from django.views import generic
 
 def news(request):
-    news_list = News.objects.all().order_by('-time')
+    news_list = News.objects.all()
     context = {'news_list': news_list}
     return render(request, 'news.html', context)
 
@@ -81,7 +81,7 @@ def search(request):
     s = request.GET.get('s', None)
     if s is None:
         return render(request, 'search.html')
-    news_list = News.objects.filter(Q(title__contains=s) | Q(text__contains=s)).distinct()
+    news_list = News.objects.filter(Q(title__contains=s) | Q(text__contains=s) | Q(kind__name__contains=s) | Q(author__username__contains=s)).distinct()
     context = {
         "news_list": news_list,
         "query": s
